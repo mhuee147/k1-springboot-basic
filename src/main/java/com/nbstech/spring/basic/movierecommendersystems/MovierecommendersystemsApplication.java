@@ -4,13 +4,11 @@ package com.nbstech.spring.basic.movierecommendersystems;
 //import com.nbstech.spring.basic.movierecommendersystems.Lesson1.MovieRecommender;
 //import com.nbstech.spring.basic.movierecommendersystems.Lesson1.ContentBasedFilter;
 
-import com.nbstech.spring.basic.movierecommendersystems.Lesson3.MovieRecommender;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-
+import com.nbstech.spring.basic.movierecommendersystems.XMLAppConfig.MovieRecommender;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Arrays;
 
-@ComponentScan
+//@ComponentScan
 
 //@SpringBootApplication
 public class MovierecommendersystemsApplication {
@@ -19,10 +17,13 @@ public class MovierecommendersystemsApplication {
 //        SpringApplication.run(MovierecommendersystemsApplication.class, args);
         //SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 //        ApplicationContext appContext = SpringApplication.run(MovierecommendersystemsApplication.class,args);
-        AnnotationConfigApplicationContext appContext =
-                new AnnotationConfigApplicationContext(MovierecommendersystemsApplication.class);
-        //create object of RecommenderImplementation class
+//        AnnotationConfigApplicationContext appContext =
+//                new AnnotationConfigApplicationContext(MovierecommendersystemsApplication.class);
+//        //create object of RecommenderImplementation class
 //        MovieRecommender recommender = new MovieRecommender(new ContentBasedFilter());
+        //== XML App Config: load the configuration file
+        ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("AppContext.xml");
+
         MovieRecommender recommender =appContext.getBean(MovieRecommender.class);
         
         //call method to get recommendations
